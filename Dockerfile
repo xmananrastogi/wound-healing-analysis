@@ -23,11 +23,11 @@ RUN pip install --no-cache-dir -r requirements-py312.txt
 # 5. Copy all our application code into the container
 COPY . .
 
-# 6. Expose the port our app will run on
-EXPOSE 8080
+# 6. Expose the port our app will run on. Hugging Face uses 7860 by default.
+EXPOSE 7860
 
 # 7. The command to run the app using gunicorn
 # It will run 'app:app' (the 'app' object inside 'app.py')
-# It binds to port 8080, has 2 workers, and a 5-minute (300s) timeout
+# It binds to port 7860, has 2 workers, and a 5-minute (300s) timeout
 # for your long-running analysis.
-CMD ["gunicorn", "--bind", "0.0.0.0:8080", "--workers", "2", "--timeout", "300", "app:app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:7860", "--workers", "2", "--timeout", "300", "app:app"]
